@@ -97,7 +97,6 @@ export class ClienteListaComponent implements OnInit {
     documento.output("dataurlnewwindow");
   }
 
-
   left(documento: any, cliente: Cliente) {
     documento.setDrawColor(0);
     documento.setFillColor(255, 255, 255);
@@ -154,6 +153,29 @@ export class ClienteListaComponent implements OnInit {
     documento.text("Av. Sargento Herminio, 1628", 200, 33);
   }
 
+  header1(documento) {
+    documento.setFont("Courier", "bold");
+    // documento.setFontStyles("bold");
+    documento.setFontSize(15);
+    documento.text("Associação Filantrópica do Cemitério Santa Rita", 100, 30);
+    documento.addImage("../../../../assets/logo.jpg", "JPEG", 35, 25, 50, 40);
+
+    documento.setFontSize(15);
+    documento.text("Fundada em 14/11/2009", 100, 36);
+    documento.text("CPNJ 11.347.229/0001-13", 100, 42);
+    documento.text("Av. Sargento Herminio, 1628", 100, 47);
+    documento.text("Crateús, CE", 100, 52);
+  }
+
+  header2(documento) {
+    documento.setFont("Arial", "bold");
+    // documento.setFontStyles("bold");
+    documento.setFontSize(17);
+    documento.text("possuidor do direito representativo de sua contribuição como sócio-proprietário para formação", 23, 100);
+    documento.text("da Associação Filantrópica do Cemitério Santa Rita, são assegurados os direitos que a lei", 30, 110);
+    documento.text("e o Estatuto da Associação lhe conferir.", 100, 120);
+  }
+
    right(documento, cliente: Cliente) {
 
      // RIGHT
@@ -184,13 +206,60 @@ export class ClienteListaComponent implements OnInit {
     // INPUT Nº CONTRIBUINTE
     this.input(documento, 212, 65, 57, 8, "Nº CONTRIBUINTE", 214, 70);
     // NOME Nº CONTRIBUINTE
-    this.inputText(documento, 16, "G0344", 243, 71);
+    this.inputText(documento, 16, cliente.quadra + cliente.numero, 243, 71);
 
     documento.addImage("../../../../assets/Assinaturas.png", "JPEG", 185, 80, 40, 20);
 
     // NOME Assinatura do Presidente
     this.inputText(documento, 8, "Assinatura do Presidente", 185, 95);  
    }
+
+   teste(documento: any, cliente: Cliente) {
+    documento.setDrawColor(0);
+    documento.setFillColor(255, 255, 255);
+    //documento.roundedRect(13, 10, 265, 175, 10, 10, "FD");
+    documento.addImage("../../../../assets/moldura.jpg", "JPEG", 6, 6, 285, 200, 6, 8);
+
+    this.header1(documento);
+    this.header2(documento);
+
+    //INPUT ENDERECO
+     //this.input(documento, 100, 100, 125, 8, "TÍTULO", 30, 100);
+     // NOME ENDERECO
+     this.inputText(documento, 35, "TÍTULO", 130, 70);
+
+    // INPUT NOME
+    
+    this.inputText(documento, 22, cliente.nome , 110, 83);
+
+    // INPUT QUADRA
+    this.inputText(documento, 14, "QUADRA: ", 70, 130);
+    // NOME QUADRA
+    this.inputText(documento, 16, cliente.quadra, 95, 130);
+
+    // INPUT Nº CONTRIBUINTE
+    this.inputText(documento, 16, "NÚMERO: ", 125, 130);
+    // NOME Nº CONTRIBUINTE
+    this.inputText(documento, 16, cliente.quadra + "0" + cliente.numero, 155, 130);
+
+    // INPUT TIPO
+    this.inputText(documento, 16, "TIPO: ", 185, 130);
+    // NOME TIPO
+    this.inputText(documento, 16, cliente.tipo, 205, 130);
+
+    documento.addImage("../../../../assets/Assinaturas.png", "JPEG", 55, 157, 40, 20);
+    documento.addImage("../../../../assets/linha.png", "JPEG", 35, 170, 80, 5);
+
+    // NOME Assinatura do Presidente
+    this.inputText(documento, 14, "PRESIDENTE", 60, 180);
+
+    documento.addImage("../../../../assets/Tesoureiro.png", "JPEG", 190, 155, 42, 17);
+    documento.addImage("../../../../assets/linha.png", "JPEG", 170, 170, 80, 5);
+
+    // NOME Assinatura do Presidente
+    this.inputText(documento, 14, "TESOUREIRO", 193, 180);
+
+  }
 
   input(
     documento,
@@ -216,8 +285,7 @@ export class ClienteListaComponent implements OnInit {
   gerarCertificado(cliente) {
     let documento = new jsPDF("landscape");
 
-    this.left(documento, cliente);
-    this.right(documento, cliente);
+    this.teste(documento, cliente);
 
     // CASO QUEIRA SOMENTE SALVAR O PDF
     // documento.save("carteira");
