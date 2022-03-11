@@ -196,7 +196,7 @@ export class ClienteListaComponent implements OnInit {
     // INPUT QUADRA
     this.input(documento, 145, 65, 25, 8, "QUADRA", 150, 70);
     // NOME QUADRA
-    this.inputText(documento, 16, cliente.quadra, 163, 71);
+    this.inputText(documento, 16, cliente.quadra.toUpperCase(), 163, 71);
 
     // INPUT TIPO
     this.input(documento, 171, 65, 40, 8, "TIPO", 172, 70);
@@ -206,7 +206,7 @@ export class ClienteListaComponent implements OnInit {
     // INPUT Nº CONTRIBUINTE
     this.input(documento, 212, 65, 57, 8, "Nº CONTRIBUINTE", 214, 70);
     // NOME Nº CONTRIBUINTE
-    this.inputText(documento, 16, cliente.quadra + cliente.numero, 243, 71);
+    this.inputText(documento, 16, cliente.quadra.toUpperCase() + "0" + cliente.numero, 243, 71);
 
     documento.addImage("../../../../assets/Assinaturas.png", "JPEG", 185, 80, 40, 20);
 
@@ -235,12 +235,12 @@ export class ClienteListaComponent implements OnInit {
     // INPUT QUADRA
     this.inputText(documento, 14, "QUADRA: ", 70, 130);
     // NOME QUADRA
-    this.inputText(documento, 16, cliente.quadra, 95, 130);
+    this.inputText(documento, 16, cliente.quadra.toUpperCase(), 95, 130);
 
     // INPUT Nº CONTRIBUINTE
     this.inputText(documento, 16, "NÚMERO: ", 125, 130);
     // NOME Nº CONTRIBUINTE
-    this.inputText(documento, 16, cliente.quadra + "0" + cliente.numero, 155, 130);
+    this.inputText(documento, 16, cliente.quadra.toUpperCase() + "0" + cliente.numero, 155, 130);
 
     // INPUT TIPO
     this.inputText(documento, 16, "TIPO: ", 185, 130);

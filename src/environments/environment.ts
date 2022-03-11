@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiURLBase: 'http://3.132.132.214:8081',
-  apiURLBase: 'http://127.0.0.1:8000',
+  apiURLBase: 'http://3.132.132.214:8081',
+  //apiURLBase: 'http://127.0.0.1:8000',
 };
 
 /*
